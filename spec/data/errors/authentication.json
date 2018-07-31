@@ -1,0 +1,7 @@
+{
+  "error": {
+    "type": "authentication_error",
+    "message": "Access ID or Secret Key is invalid",
+    "field": null
+  }
+}

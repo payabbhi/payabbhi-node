@@ -1,0 +1,7 @@
+{
+  "error": {
+    "type": "gateway_error",
+    "message": "The gateway request timed out",
+    "field": null
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "order_aCsXtMDdTafnDbHd",
+  "object": "order",
+  "amount": 1000,
+  "currency": "INR",
+  "merchant_order_id": "ordRefNo123456",
+  "status": "created",
+  "payment_attempts": 0,
+  "notes": {
+    "item_count": "2",
+    "sales_channel": "website"
+  },
+  "created_at": 1495546689
+}

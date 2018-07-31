@@ -1,0 +1,11 @@
+{
+  "id": "rfnd_02iOL6yHtrTTVYSw",
+  "object": "refund",
+  "amount": 200,
+  "currency": "INR",
+  "payment_id": "pay_mUy6UYsRvIxH9Qi2",
+  "notes": {
+    "sales_channel": "website"
+  },
+  "created_at": 1495554728
+}

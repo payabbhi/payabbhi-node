@@ -1,0 +1,55 @@
+{
+  "id": "pay_gtpQ9aBKJfgNHVX4",
+  "object": "payment",
+  "amount": 1000,
+  "currency": "INR",
+  "status": "captured",
+  "order_id": "order_D9kQbGJAmGwJ2XMK",
+  "international": false,
+  "method": "card",
+  "description": "For online purchase of 3 items",
+  "card": "visa-debit",
+  "bank": "",
+  "wallet": "",
+  "vpa": "",
+  "email": "test@example.com",
+  "contact": "9999999999",
+  "notes": null,
+  "fee": 5,
+  "service_tax": 0,
+  "payout_amount": 995,
+  "payout_type": "",
+  "refunded_amount": 400,
+  "refund_status": "partial",
+  "refunds": {
+    "total_count": 2,
+    "object": "list",
+    "data": [
+      {
+        "id": "rfnd_PWrr22qRNIjAkQ9U",
+        "object": "refund",
+        "amount": 200,
+        "currency": "INR",
+        "payment_id": "pay_mUy6UYsRvIxH9Qi2",
+        "notes": {
+          "reason": "order_canceled"
+        },
+        "created_at": 1495546589
+      },
+      {
+        "id": "rfnd_iqPqyu7Ds5UaC434",
+        "object": "refund",
+        "amount": 200,
+        "currency": "INR",
+        "payment_id": "pay_mUy6UYsRvIxH9Qi2",
+        "notes": {
+          "reason": "order_canceled"
+        },
+        "created_at": 1495547054
+      }
+    ]
+  },
+  "error_code": "",
+  "error_description": "",
+  "created_at": 1495546415
+}
