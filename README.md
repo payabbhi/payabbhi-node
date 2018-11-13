@@ -41,8 +41,8 @@ payabbhi.orders.create({
 
 ```
 
-## Signature Verification
-Payabbhi Node library provides utility functions for verifying the payment signature received in the payment callback. The snippet below demonstrates a typical usage:
+## Payment Signature Verification
+Payabbhi Node library provides utility functions for verifying the payment signature received in the payment callback.
 
 ```js
 payabbhi.verifyPaymentSignature({
@@ -52,6 +52,16 @@ payabbhi.verifyPaymentSignature({
 });
 
 ```
+
+## Webhook Signature Verification
+Payabbhi Node library provides an utility function for webhook signature verification. 
+
+```js
+// replayInterval is optional. Default value is 300 seconds.
+payabbhi.verifyWebhookSignature('<payload>','<actualSignature>', '<secret>', <replayInterval>);
+
+```
+
 
 ## Promise support
 

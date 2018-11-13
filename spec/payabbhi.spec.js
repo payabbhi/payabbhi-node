@@ -1,5 +1,6 @@
 const assert = require('chai').assert;
 const expect = require('chai').expect
+const crypto = require('crypto');
 
 const payabbhi = require('../lib/payabbhi')('access_id', 'secret_key');
 
@@ -27,6 +28,51 @@ describe('Payabbhi', function() {
           "payment_signature": null
         });
       }).to.throw()
+    });
+
+  });
+
+
+  describe('#verifyWebhookSignature()', function() {
+
+    it('should verify webhook signature without replay', function() {
+      var payload = '{"event":"payment.captured"}';
+      var t = Math.round(Date.now()/1000);
+      var secret="skw_live_jHNxKsDqJusco5hA";
+      var message = payload + '&' + t.toString();
+      var v1 = crypto.createHmac('sha256', secret).update(message, 'utf8').digest('hex');
+      var actualSignature = "t=" + t.toString() + ", v1=" + v1;
+
+      var result = payabbhi.verifyWebhookSignature(payload,actualSignature,secret);
+
+      assert.isTrue(result);
+    });
+
+    it('should verify webhook signature with replay', function() {
+      var payload = '{"event":"payment.captured"}';
+      var t = Math.round(Date.now()/1000);
+      var secret="skw_live_jHNxKsDqJusco5hA";
+      var message = payload + '&' + t.toString();
+      var v1 = crypto.createHmac('sha256', secret).update(message, 'utf8').digest('hex');
+      var actualSignature = "t=" + t.toString() + ", v1=" + v1;
+
+      var result = payabbhi.verifyWebhookSignature(payload,actualSignature,secret, 100);
+
+      assert.isTrue(result);
+    });
+
+
+    it('should throw error for webhook signature with replay atatck', function() {
+      var payload = '{"event":"payment.captured"}';
+      var t = Math.round(Date.now()/1000) - 20;
+      var secret="skw_live_jHNxKsDqJusco5hA";
+      var message = payload + '&' + t.toString();
+      var v1 = crypto.createHmac('sha256', secret).update(message, 'utf8').digest('hex');
+      var actualSignature = "t=" + t.toString() + ", v1=" + v1;
+
+      var result = payabbhi.verifyWebhookSignature(payload,actualSignature,secret, 10);
+
+      assert.isFalse(result);
     });
 
   });

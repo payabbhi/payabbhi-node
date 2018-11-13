@@ -5,14 +5,36 @@ const Signature = require('../lib/signature');
 
 
 describe('Signature', function() {
-  describe('#verify()', function() {
+  describe('#paymentSignatureVerify()', function() {
 
     it('should throw error when data is invalid', function() {
       expect(function () {
-        Signature.verify(null, 'secret_key')
+        Signature.paymentSignatureVerify(null, 'secret_key')
       }).to.throw()
     });
 
+  });
+
+  describe('#webhookSignatureVerify()', function() {
+
+    it('should throw error when data is invalid', function() {
+      expect(function () {
+        Signature.webhookSignatureVerify(null, 'actualSignature', 'secret', 400)
+      }).to.throw()
+    });
+
+    it('should throw error when actualSignature is invalid', function() {
+      expect(function () {
+        Signature.webhookSignatureVerify('data', null, 'secret', 400)
+      }).to.throw()
+    });
+
+    it('should throw error when secret is invalid', function() {
+      expect(function () {
+        Signature.webhookSignatureVerify('data', 'actualSignature', null, 400)
+      }).to.throw()
+    });
+    
   });
 
 
