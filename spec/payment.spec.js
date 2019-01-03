@@ -1,11 +1,14 @@
 const assert = require('assert');
 const nock = require('nock');
 const payabbhi = require('../lib/payabbhi')('some_access_id', 'some_secret_key');
+const API_BASE = 'https://payabbhi.com/api/v1';
+
 const paymentsJSON = require('./data/payments.json');
 const paymentJSON = require('./data/payment.json');
 const captureJSON = require('./data/capture.json');
 const refundsJSON = require('./data/refunds.json');
-const API_BASE = 'https://payabbhi.com/api/v1';
+const transfersJSON = require('./data/transfers.json');
+const transferJSON  = require('./data/transfer.json');
 
 describe('payments', function() {
 
@@ -84,5 +87,36 @@ describe('payments', function() {
       assert.equal(refunds.data.length, 2);
     });
   }); // end of #refunds(params)
+
+
+  describe('#transfers()', function() {
+    beforeEach(() => { nock(API_BASE).get('/payments/pay_W2FmbqANt09epUOz/transfers').reply(200, transfersJSON) });
+    it('should return the transfers for a payment', async function() {
+      var transfers = await payabbhi.payments.transfers('pay_W2FmbqANt09epUOz');
+      assert.equal(transfers.total_count, 3);
+      assert.equal(transfers.object, "list");
+      assert.equal(transfers.data.length, 3);
+    });
+  }); // End of #transfers()
+
+  describe('#transfers(param)', function() {
+    beforeEach(() => { nock(API_BASE).get('/payments/pay_W2FmbqANt09epUOz/transfers?count=3').reply(200, transfersJSON) });
+    it('should return the transfers for a payment with param', async function() {
+      var transfers = await payabbhi.payments.transfers('pay_W2FmbqANt09epUOz', {count: 3});
+      assert.equal(transfers.total_count, 3);
+      assert.equal(transfers.object, "list");
+      assert.equal(transfers.data.length, 3);
+    });
+  }); // End of #transfers(param)
+
+  describe('#transfers(params)', function() {
+    beforeEach(() => { nock(API_BASE).get('/payments/pay_W2FmbqANt09epUOz/transfers?count=3&skip=1&from=15234567&to=15678943').reply(200, transfersJSON) });
+    it('should return the transfers for a payment with all params', async function() {
+      var transfers = await payabbhi.payments.transfers('pay_W2FmbqANt09epUOz', {count: 3, skip: 1, from: 15234567, to: 15678943});
+      assert.equal(transfers.total_count, 3);
+      assert.equal(transfers.object, "list");
+      assert.equal(transfers.data.length, 3);
+    });
+  }); // End of #transfers(params)
 
 });

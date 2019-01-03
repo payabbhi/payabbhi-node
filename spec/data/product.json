@@ -1,0 +1,11 @@
+{
+  "id": "prod_v0RYyTj4qEj56c12",
+  "object": "product",
+  "name": "Books",
+  "type": "service",
+  "unit_label": "MB",
+  "notes": {
+    "genre": "comedy"
+  },
+  "created_at": 1539153224
+}

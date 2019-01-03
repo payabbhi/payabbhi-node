@@ -18,10 +18,10 @@ describe('Config', function() {
     assert.equal(config.secretKey, 'secret-key');
   });
 
-	it('should set appinfo', function(){
-		var config = new Config().setAppInfo('MyApp', '2.0.1', 'https://myapp.me');
+  it('should set appinfo', function(){
+    var config = new Config().setAppInfo('MyApp', '2.0.1', 'https://myapp.me');
 
-		assert.equal(config.appInfo.toString(), 'MyApp/2.0.1 (https://myapp.me)');
-	});
+    assert.equal(config.appInfo.toString(), 'MyApp/2.0.1 (https://myapp.me)');
+  });
 
 });

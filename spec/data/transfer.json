@@ -1,0 +1,17 @@
+{
+  "id": "trans_ucwszWrXUZJGDgMX",
+  "object": "transfer",
+  "description": "Test Transfer",
+  "source_id": "pay_W2FmbqANt09epUOz",
+  "recipient_id": "recp_Y2ojRlJVqRMhB0Ay",
+  "amount": 50,
+  "currency": "INR",
+  "fees": 0,
+  "gst": 0,
+  "notes": {
+    "home": {
+      "city": "kolkata"
+    }
+  },
+  "created_at": 1540882106
+}
