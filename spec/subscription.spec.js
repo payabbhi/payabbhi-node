@@ -15,10 +15,16 @@ describe("Subscriptions", function () {
       var subscription = await payabbhi.subscriptions.create({
         plan_id: "plan_tuOWN0Sc0uMB4s8E",
         customer_id: "cust_2WmsQoSRZMWWkcZg",
-        billing_method: "automatic",
+        billing_method: "recurring",
         quantity: 1,
         customer_notification_by: "merchant",
-        billing_cycle_count: 5
+        billing_cycle_count: 5,
+        upfront_items: [{
+          customer_id: "cust_2WmsQoSRZMWWkcZg",
+          name: "Unit Test",
+          amount: 100,
+          currency: "INR"
+        }]
       });
       assert.equal(subscription.object, "subscription");
       assert.equal(subscription.id, "sub_luQ4QIXzaEIN0g5D");
@@ -67,9 +73,9 @@ describe("Subscriptions", function () {
   }); // End of #all(params)
 
   describe('#all(params)', function() {
-    beforeEach(() => { nock(API_BASE).get('/subscriptions?plan_id=plan_tuOWN0Sc0uMB4s8E&status=active&billing_method=automatic&customer_id=cust_2WmsQoSRZMWWkcZg').reply(200, mockSubscriptions) });
+    beforeEach(() => { nock(API_BASE).get('/subscriptions?plan_id=plan_tuOWN0Sc0uMB4s8E&status=active&billing_method=recurring&customer_id=cust_2WmsQoSRZMWWkcZg').reply(200, mockSubscriptions) });
     it('should return subscriptions without common pagination params', async function() {
-      var subscriptions = await payabbhi.subscriptions.all({plan_id: 'plan_tuOWN0Sc0uMB4s8E', status: 'active', billing_method:'automatic', customer_id: 'cust_2WmsQoSRZMWWkcZg'});
+      var subscriptions = await payabbhi.subscriptions.all({plan_id: 'plan_tuOWN0Sc0uMB4s8E', status: 'active', billing_method:'recurring', customer_id: 'cust_2WmsQoSRZMWWkcZg'});
       assert.equal(subscriptions.total_count, 2);
       assert.equal(subscriptions.object, "list");
       assert.equal(subscriptions.data.length, 2);
@@ -77,9 +83,9 @@ describe("Subscriptions", function () {
   }); // End of #all(params)
 
   describe('#all(params)', function() {
-    beforeEach(() => { nock(API_BASE).get('/subscriptions?count=2&skip=1&from=15234567&to=15678943&plan_id=plan_tuOWN0Sc0uMB4s8E&status=active&billing_method=automatic&customer_id=cust_2WmsQoSRZMWWkcZg').reply(200, mockSubscriptions) });
+    beforeEach(() => { nock(API_BASE).get('/subscriptions?count=2&skip=1&from=15234567&to=15678943&plan_id=plan_tuOWN0Sc0uMB4s8E&status=active&billing_method=recurring&customer_id=cust_2WmsQoSRZMWWkcZg').reply(200, mockSubscriptions) });
     it('should return subscriptions with all params', async function() {
-      var subscriptions = await payabbhi.subscriptions.all({count: 2, skip: 1, from: 15234567, to: 15678943, plan_id: 'plan_tuOWN0Sc0uMB4s8E', status: 'active', billing_method:'automatic', customer_id: 'cust_2WmsQoSRZMWWkcZg'});
+      var subscriptions = await payabbhi.subscriptions.all({count: 2, skip: 1, from: 15234567, to: 15678943, plan_id: 'plan_tuOWN0Sc0uMB4s8E', status: 'active', billing_method:'recurring', customer_id: 'cust_2WmsQoSRZMWWkcZg'});
       assert.equal(subscriptions.total_count, 2);
       assert.equal(subscriptions.object, "list");
       assert.equal(subscriptions.data.length, 2);

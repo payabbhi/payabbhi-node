@@ -5,6 +5,7 @@ const API_BASE = 'https://payabbhi.com/api/v1';
 
 const mockInvoiceitem = require('./data/invoiceitem.json');
 const mockInvoiceitems = require('./data/invoiceitems.json');
+const mockItemInvoices = require('./data/item.invoices.json');
 
 describe("Invoiceitems", function () {
 
@@ -40,7 +41,7 @@ describe("Invoiceitems", function () {
     beforeEach(() => { nock(API_BASE).get('/invoiceitems').reply(200, mockInvoiceitems) });
     it('should return invoiceitems', async function() {
       var invoiceitems = await payabbhi.invoiceitems.all();
-      assert.equal(invoiceitems.total_count, 5);
+      assert.equal(invoiceitems.total_count, 2);
       assert.equal(invoiceitems.object, "list");
       assert.equal(invoiceitems.data.length, 2);
     });
@@ -50,7 +51,7 @@ describe("Invoiceitems", function () {
     beforeEach(() => { nock(API_BASE).get('/invoiceitems?count=2').reply(200, mockInvoiceitems) });
     it('should return invoiceitems with param', async function() {
       var invoiceitems = await payabbhi.invoiceitems.all({count: 2});
-      assert.equal(invoiceitems.total_count, 5);
+      assert.equal(invoiceitems.total_count, 2);
       assert.equal(invoiceitems.object, "list");
       assert.equal(invoiceitems.data.length, 2);
     });
@@ -60,7 +61,7 @@ describe("Invoiceitems", function () {
     beforeEach(() => { nock(API_BASE).get('/invoiceitems?count=2&skip=1&from=15234567&to=15678943').reply(200, mockInvoiceitems) });
     it('should return invoiceitems with all params', async function() {
       var invoiceitems = await payabbhi.invoiceitems.all({count: 2, skip: 1, from: 15234567, to: 15678943});
-      assert.equal(invoiceitems.total_count, 5);
+      assert.equal(invoiceitems.total_count, 2);
       assert.equal(invoiceitems.object, "list");
       assert.equal(invoiceitems.data.length, 2);
     });
@@ -75,6 +76,19 @@ describe("Invoiceitems", function () {
       assert.equal(invoiceitems.object, "invoiceitem");
     });
   }); // End of #delete(params)
+
+
+  describe('#invoices()', function() {
+    beforeEach(() => { nock(API_BASE).get('/invoiceitems/item_zvenYE0Tk8qTUaER/invoices').reply(200, mockItemInvoices) });
+    it('should return invoices for an invoiceitem', async function() {
+      var invoices = await payabbhi.invoiceitems.invoices('item_zvenYE0Tk8qTUaER');
+      assert.equal(invoices.total_count, 2);
+      assert.equal(invoices.object, "list");
+      assert.equal(invoices.data.length, 2);
+      assert.equal(invoices.data[0].line_items.data[0].id, 'item_zvenYE0Tk8qTUaER');
+      assert.equal(invoices.data[1].line_items.data[0].id, 'item_zvenYE0Tk8qTUaER');
+    });
+  });
 
 
 }); // End of Invoiceitems

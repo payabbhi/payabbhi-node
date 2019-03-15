@@ -2,13 +2,12 @@
   "id": "item_zvenYE0Tk8qTUaER",
   "object": "invoiceitem",
   "name": "Line Item",
-  "description": "",
+  "description": "Test Line Item",
   "amount": 100,
   "currency": "INR",
   "customer_id": "cust_2WmsQoSRZMWWkcZg",
-  "invoice_id": "invt_LN3GM0Ea7hVcsgr6",
-  "subscription_id": "sub_luQ4QIXzaEIN0g5D",
   "quantity": 1,
   "created_at": 1539008001,
-  "notes": null
+  "notes": null,
+  "deleted_at": 0
 }

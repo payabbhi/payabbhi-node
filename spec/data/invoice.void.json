@@ -31,7 +31,7 @@
   "notify_by": "email",
   "payment_attempt": 0,
   "invoice_no": "3123123123",
-  "status": "issued",
+  "status": "void",
   "subscription_id": "",
   "url": "https://payabbhi.com/zpuoxajg"
 }

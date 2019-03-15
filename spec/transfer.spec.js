@@ -12,9 +12,11 @@ describe("Transfers", function () {
     beforeEach(() => { nock(API_BASE).post('/payments/pay_W2FmbqANt09epUOz/transfers').reply(200, mockTransfer) });
     it('should create a new transfer', async function() {
       var transfer = await payabbhi.transfers.create('pay_W2FmbqANt09epUOz', {
-        amount: 100,
-        currency: "INR",
-        recipient_id: 'recp_Y2ojRlJVqRMhB0Ay'
+        transfers: [{
+          amount: 100,
+          currency: "INR",
+          recipient_id: 'recp_Y2ojRlJVqRMhB0Ay'
+        }]
       });
       assert.equal(transfer.object, "transfer");
       assert.equal(transfer.id, "trans_ucwszWrXUZJGDgMX");

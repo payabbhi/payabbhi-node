@@ -1,34 +1,32 @@
 {
-  "total_count": 5,
+  "total_count": 2,
   "object": "list",
   "data": [
     {
       "id": "item_jYGaYf14SeZ13DkJ",
       "object": "invoiceitem",
-      "name": "Line Item",
-      "description": "",
+      "name": "Line Item 1",
+      "description": "Test Line Item 1",
       "amount": 200,
       "currency": "INR",
       "customer_id": "cust_2WmsQoSRZMWWkcZg",
-      "invoice_id": "",
-      "subscription_id": "",
       "quantity": 1,
       "created_at": 1539174368,
-      "notes": null
+      "notes": null,
+      "deleted_at": 0
     },
     {
       "id": "item_I9Gh0wJHJ2tvorbT",
       "object": "invoiceitem",
-      "name": "Line Item",
-      "description": "",
+      "name": "Line Item 2",
+      "description": "Test Line Item 2",
       "amount": 100,
       "currency": "INR",
       "customer_id": "cust_2WmsQoSRZMWWkcZg",
-      "invoice_id": "invt_srxOZZk6dIgWTVls",
-      "subscription_id": "sub_xLH108FJwUlX47SI",
       "quantity": 1,
       "created_at": 1539171807,
-      "notes": null
+      "notes": null,
+      "deleted_at": 0
     }
   ]
 }
