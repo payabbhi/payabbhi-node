@@ -25,7 +25,7 @@ describe("Invoices", function () {
         line_items: [{id: "item_jYGaYf14SeZ13DkJ"}]
       });
       assert.equal(invoice.object, "invoice");
-      assert.equal(invoice.id, "invt_UZqFoPLamaZqLFkZ");
+      assert.equal(invoice.id, "invt_v1uXGmhIUMylFQPS");
     });
   }); // End of #create()
 
@@ -35,7 +35,7 @@ describe("Invoices", function () {
     it('should retrieve an invoice', async function() {
       var invoice = await payabbhi.invoices.retrieve('invt_UZqFoPLamaZqLFkZ');
       assert.equal(invoice.object, "invoice");
-      assert.equal(invoice.id, "invt_UZqFoPLamaZqLFkZ");
+      assert.equal(invoice.id, "invt_v1uXGmhIUMylFQPS");
     });
   }); // End of #retrieve()
 
@@ -44,7 +44,7 @@ describe("Invoices", function () {
     beforeEach(() => { nock(API_BASE).get('/invoices').reply(200, mockInvoices) });
     it('should return invoices', async function() {
       var invoices = await payabbhi.invoices.all();
-      assert.equal(invoices.total_count, 5);
+      assert.equal(invoices.total_count, 2);
       assert.equal(invoices.object, "list");
       assert.equal(invoices.data.length, 2);
     });
@@ -54,7 +54,7 @@ describe("Invoices", function () {
     beforeEach(() => { nock(API_BASE).get('/invoices?count=2').reply(200, mockInvoices) });
     it('should return invoices with params', async function() {
       var invoices = await payabbhi.invoices.all({count: 2});
-      assert.equal(invoices.total_count, 5);
+      assert.equal(invoices.total_count, 2);
       assert.equal(invoices.object, "list");
       assert.equal(invoices.data.length, 2);
     });
@@ -64,7 +64,7 @@ describe("Invoices", function () {
     beforeEach(() => { nock(API_BASE).get('/invoices?count=2&billing_method=recurring').reply(200, mockInvoices) });
     it('should return invoices with params', async function() {
       var invoices = await payabbhi.invoices.all({count: 2, billing_method: 'recurring'});
-      assert.equal(invoices.total_count, 5);
+      assert.equal(invoices.total_count, 2);
       assert.equal(invoices.object, "list");
       assert.equal(invoices.data.length, 2);
     });
@@ -74,7 +74,7 @@ describe("Invoices", function () {
     beforeEach(() => { nock(API_BASE).get('/invoices?billing_method=recurring&due_date_from=15838483&due_date_to=16454454&email=g@b.com&subscription_id=sub_xLH108FJwUlX47SI').reply(200, mockInvoices) });
     it('should return invoices without common pagination params', async function() {
       var invoices = await payabbhi.invoices.all({billing_method: 'recurring', due_date_from: 15838483, due_date_to: 16454454, email: 'g@b.com', subscription_id: 'sub_xLH108FJwUlX47SI'});
-      assert.equal(invoices.total_count, 5);
+      assert.equal(invoices.total_count, 2);
       assert.equal(invoices.object, "list");
       assert.equal(invoices.data.length, 2);
     });
@@ -84,7 +84,7 @@ describe("Invoices", function () {
     beforeEach(() => { nock(API_BASE).get('/invoices?count=2&skip=1&from=15234567&to=15678943&billing_method=recurring&due_date_from=15838483&due_date_to=16454454&email=g@b.com&subscription_id=sub_xLH108FJwUlX47SI').reply(200, mockInvoices) });
     it('should return invoices with all params', async function() {
       var invoices = await payabbhi.invoices.all({count: 2, skip: 1, from: 15234567, to: 15678943, billing_method: 'recurring', due_date_from: 15838483, due_date_to: 16454454, email: 'g@b.com', subscription_id: 'sub_xLH108FJwUlX47SI'});
-      assert.equal(invoices.total_count, 5);
+      assert.equal(invoices.total_count, 2);
       assert.equal(invoices.object, "list");
       assert.equal(invoices.data.length, 2);
     });
@@ -92,10 +92,10 @@ describe("Invoices", function () {
 
 
   describe('#void()', function() {
-    beforeEach(() => { nock(API_BASE).post('/invoices/invt_UZqFoPLamaZqLFkZ/void').reply(200, mockVoid) });
+    beforeEach(() => { nock(API_BASE).post('/invoices/invt_ZBymDifGQqgHPISh/void').reply(200, mockVoid) });
     it('should void an invoice', async function() {
-      var invoice = await payabbhi.invoices.void('invt_UZqFoPLamaZqLFkZ');
-      assert.equal(invoice.id, "invt_UZqFoPLamaZqLFkZ");
+      var invoice = await payabbhi.invoices.void('invt_ZBymDifGQqgHPISh');
+      assert.equal(invoice.id, "invt_ZBymDifGQqgHPISh");
       assert.equal(invoice.object, "invoice");
       assert.equal(invoice.status, "void");
     });
@@ -106,9 +106,9 @@ describe("Invoices", function () {
     beforeEach(() => { nock(API_BASE).get('/invoices/invt_srxOZZk6dIgWTVls/line_items').reply(200, mockLineItems) });
     it('should return line items for an invoices', async function() {
       var line_items = await payabbhi.invoices.line_items('invt_srxOZZk6dIgWTVls');
-      assert.equal(line_items.total_count, 2);
+      assert.equal(line_items.total_count, 1);
       assert.equal(line_items.object, "list");
-      assert.equal(line_items.data.length, 2);
+      assert.equal(line_items.data.length, 1);
     });
   }); // End of #line_items()
 
@@ -116,9 +116,9 @@ describe("Invoices", function () {
     beforeEach(() => { nock(API_BASE).get('/invoices/invt_srxOZZk6dIgWTVls/line_items?count=2').reply(200, mockLineItems) });
     it('should return line items for an invoices with param', async function() {
       var line_items = await payabbhi.invoices.line_items('invt_srxOZZk6dIgWTVls', {count: 2 });
-      assert.equal(line_items.total_count, 2);
+      assert.equal(line_items.total_count, 1);
       assert.equal(line_items.object, "list");
-      assert.equal(line_items.data.length, 2);
+      assert.equal(line_items.data.length, 1);
     });
   }); // End of #line_items(param)
 
@@ -126,20 +126,20 @@ describe("Invoices", function () {
     beforeEach(() => { nock(API_BASE).get('/invoices/invt_srxOZZk6dIgWTVls/line_items?count=2&skip=1&from=15234567&to=15678943').reply(200, mockLineItems) });
     it('should return line items for an invoices with all params', async function() {
       var line_items = await payabbhi.invoices.line_items('invt_srxOZZk6dIgWTVls', {count: 2, skip: 1, from: 15234567, to: 15678943});
-      assert.equal(line_items.total_count, 2);
+      assert.equal(line_items.total_count, 1);
       assert.equal(line_items.object, "list");
-      assert.equal(line_items.data.length, 2);
+      assert.equal(line_items.data.length, 1);
     });
   }); // End of #line_items(params)
 
 
   describe('#payments()', function() {
-    beforeEach(() => { nock(API_BASE).get('/invoices/invt_UZqFoPLamaZqLFkZ/payments').reply(200, mockPayments) });
+    beforeEach(() => { nock(API_BASE).get('/invoices/invt_srxOZZk6dIgWTVls/payments').reply(200, mockPayments) });
     it('should return payments for an invoices', async function() {
-      var payments = await payabbhi.invoices.payments('invt_UZqFoPLamaZqLFkZ');
-      assert.equal(payments.total_count, 2);
+      var payments = await payabbhi.invoices.payments('invt_srxOZZk6dIgWTVls');
+      assert.equal(payments.total_count, 1);
       assert.equal(payments.object, "list");
-      assert.equal(payments.data.length, 2);
+      assert.equal(payments.data.length, 1);
     });
   }); // End of #payments()
 

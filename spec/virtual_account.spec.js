@@ -6,7 +6,7 @@ const virtualAccountsJSON = require('./data/virtualAccounts.json');
 const virtualAccountJSON = require('./data/virtualAccount.json');
 const virtualPaymentsJSON = require('./data/virtualAccount.payments.json');
 const virtualAccountCloseJSON = require('./data/virtualAccount.close.json');
-const paymentVirtualAccountJSON = require('./data/payment.virtualAccount.json');
+
 describe('virtual_accounts' , function(){
 
   describe(" #create(params) ",function() {
@@ -73,16 +73,6 @@ describe('virtual_accounts' , function(){
       assert.equal(virtualaccount.status, "closed");
     });
   }); // end of #close()
-
-  describe('#details()', function() {
-    beforeEach(() => { nock(API_BASE).get('/payments/pay_4I4NDogajGtV9bVo/virtual_account').reply(200, paymentVirtualAccountJSON) });
-
-    it('should retrieve virtual account details for a payment', async function() {
-      var response = await payabbhi.virtual_accounts.details('pay_4I4NDogajGtV9bVo');
-      assert.equal(response.object, "payment");
-      assert.equal(response.id,"pay_4I4NDogajGtV9bVo");
-    });
-  }); // end of #details()
 
 
 });

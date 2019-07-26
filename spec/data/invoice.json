@@ -1,37 +1,56 @@
 {
-  "id": "invt_UZqFoPLamaZqLFkZ",
+  "id": "invt_v1uXGmhIUMylFQPS",
   "object": "invoice",
-  "amount": 2400,
+  "gross_amount": 180,
+  "tax_amount": 12,
+  "amount": 192,
   "billing_method": "manual",
   "customer_id": "cust_2WmsQoSRZMWWkcZg",
   "currency": "INR",
-  "created_at": 1539074485,
+  "created_at": 1539177115,
   "description": "Test Invoice",
-  "due_date": 1540060199,
+  "due_date": 1549176945,
   "line_items": {
     "total_count": 1,
     "object": "list",
     "data": [
       {
-        "id": "item_FL3nHHB7i7Fpcj1J",
+        "id": "item_Jz6dd6uLbu05Y5kk",
         "object": "invoiceitem",
-        "name": "Test Item",
-        "description": "Line Item",
+        "name": "Item1",
+        "description": "",
         "amount": 200,
         "currency": "INR",
-        "customer_id": "cust_2WmsQoSRZMWWkcZg",
-        "quantity": 12,
-        "created_at": 1539074485,
+        "customer_id": "cust_VD9uYO8uc29b4hY8",
+        "quantity": 1,
+        "created_at": 1539179491,
         "notes": null,
-        "deleted_at": 0
+        "deleted_at": 0,
+        "unit": "",
+        "hsn_code": "hsn_code",
+        "sac_code": "",
+        "taxrate": 500,
+        "cess": 200,
+        "tax_inclusive": false,
+        "discount": 20,
+        "tax_amount": 12,
+        "net_amount": 192,
+        "taxable_amount": 180,
+        "gross_amount": 180
       }
     ]
   },
-  "notes": null,
+  "notes": {
+    "mode": "test"
+  },
   "notify_by": "email",
   "payment_attempt": 0,
-  "invoice_no": "3123123123",
+  "invoice_no": "123123123123",
   "status": "issued",
   "subscription_id": "",
-  "url": "https://payabbhi.com/zpuoxajg"
+  "url": "https://payabbhi.com/zrt2zlh5",
+  "place_of_supply": "Delhi",
+  "terms_conditions": "terms_conditions",
+  "customer_notes": "customer_notes",
+  "customer_notification_by":"merchant"
 }

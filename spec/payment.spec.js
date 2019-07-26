@@ -8,7 +8,7 @@ const paymentJSON = require('./data/payment.json');
 const captureJSON = require('./data/capture.json');
 const refundsJSON = require('./data/refunds.json');
 const transfersJSON = require('./data/transfers.json');
-const transferJSON  = require('./data/transfer.json');
+const paymentVirtualAccountJSON = require('./data/payment.virtualAccount.json');
 
 describe('payments', function() {
 
@@ -90,33 +90,62 @@ describe('payments', function() {
 
 
   describe('#transfers()', function() {
-    beforeEach(() => { nock(API_BASE).get('/payments/pay_W2FmbqANt09epUOz/transfers').reply(200, transfersJSON) });
+    beforeEach(() => { nock(API_BASE).get('/payments/pay_zlAsx5g7yH88xcFE/transfers').reply(200, transfersJSON) });
     it('should return the transfers for a payment', async function() {
-      var transfers = await payabbhi.payments.transfers('pay_W2FmbqANt09epUOz');
-      assert.equal(transfers.total_count, 3);
+      var transfers = await payabbhi.payments.transfers('pay_zlAsx5g7yH88xcFE');
+      assert.equal(transfers.total_count, 41);
       assert.equal(transfers.object, "list");
       assert.equal(transfers.data.length, 3);
     });
   }); // End of #transfers()
 
   describe('#transfers(param)', function() {
-    beforeEach(() => { nock(API_BASE).get('/payments/pay_W2FmbqANt09epUOz/transfers?count=3').reply(200, transfersJSON) });
+    beforeEach(() => { nock(API_BASE).get('/payments/pay_zlAsx5g7yH88xcFE/transfers?count=3').reply(200, transfersJSON) });
     it('should return the transfers for a payment with param', async function() {
-      var transfers = await payabbhi.payments.transfers('pay_W2FmbqANt09epUOz', {count: 3});
-      assert.equal(transfers.total_count, 3);
+      var transfers = await payabbhi.payments.transfers('pay_zlAsx5g7yH88xcFE', {count: 3});
+      assert.equal(transfers.total_count, 41);
       assert.equal(transfers.object, "list");
       assert.equal(transfers.data.length, 3);
     });
   }); // End of #transfers(param)
 
   describe('#transfers(params)', function() {
-    beforeEach(() => { nock(API_BASE).get('/payments/pay_W2FmbqANt09epUOz/transfers?count=3&skip=1&from=15234567&to=15678943').reply(200, transfersJSON) });
+    beforeEach(() => { nock(API_BASE).get('/payments/pay_zlAsx5g7yH88xcFE/transfers?count=3&skip=1&from=15234567&to=15678943').reply(200, transfersJSON) });
     it('should return the transfers for a payment with all params', async function() {
-      var transfers = await payabbhi.payments.transfers('pay_W2FmbqANt09epUOz', {count: 3, skip: 1, from: 15234567, to: 15678943});
-      assert.equal(transfers.total_count, 3);
+      var transfers = await payabbhi.payments.transfers('pay_zlAsx5g7yH88xcFE', {count: 3, skip: 1, from: 15234567, to: 15678943});
+      assert.equal(transfers.total_count, 41);
       assert.equal(transfers.object, "list");
       assert.equal(transfers.data.length, 3);
     });
   }); // End of #transfers(params)
+
+  describe('#transfer(param)', function() {
+    beforeEach(() => { nock(API_BASE).post('/payments/pay_zlAsx5g7yH88xcFE/transfers').reply(200, transfersJSON) });
+
+    it('should create a transfer for a payment ', async function() {
+      var response = await payabbhi.payments.transfer('pay_zlAsx5g7yH88xcFE' ,{
+          transfers: [{
+            amount: 100,
+            currency: "INR",
+            beneficiary_id: 'bene_Za30i2k3p6blq3i1'
+          }]
+        });
+        assert.equal(response.object, "list");
+        assert.equal(response.total_count, 41);
+        assert.equal(response.data.length,3);
+        assert.equal(response.data[0].source_id,"pay_zlAsx5g7yH88xcFE");
+    });
+  });// End of #transfer(param)
+
+  describe('#virtual_account(param)', function() {
+    beforeEach(() => { nock(API_BASE).get('/payments/pay_4I4NDogajGtV9bVo/virtual_account').reply(200, paymentVirtualAccountJSON) });
+
+    it('should retrieve virtual account details for a payment', async function() {
+      var response = await payabbhi.payments.virtual_account('pay_4I4NDogajGtV9bVo');
+      assert.equal(response.object, "payment");
+      assert.equal(response.id,"pay_4I4NDogajGtV9bVo");
+    });
+
+  });// End of #virtual_account(param)
 
 });

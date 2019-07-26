@@ -27,17 +27,17 @@ describe("Subscriptions", function () {
         }]
       });
       assert.equal(subscription.object, "subscription");
-      assert.equal(subscription.id, "sub_luQ4QIXzaEIN0g5D");
+      assert.equal(subscription.id, "sub_xLH108FJwUlX47SI");
     });
   }); // End of #create()
 
 
   describe('#retrieve()', function () {
-    beforeEach(() => { nock(API_BASE).get('/subscriptions/sub_luQ4QIXzaEIN0g5D').reply(200, mockSubscription) });
+    beforeEach(() => { nock(API_BASE).get('/subscriptions/sub_xLH108FJwUlX47SI').reply(200, mockSubscription) });
     it('should retrieve a subscription', async function() {
-      var subscription = await payabbhi.subscriptions.retrieve('sub_luQ4QIXzaEIN0g5D');
+      var subscription = await payabbhi.subscriptions.retrieve('sub_xLH108FJwUlX47SI');
       assert.equal(subscription.object, "subscription");
-      assert.equal(subscription.id, "sub_luQ4QIXzaEIN0g5D");
+      assert.equal(subscription.id, "sub_xLH108FJwUlX47SI");
     });
   }); // End of #retrieve()
 

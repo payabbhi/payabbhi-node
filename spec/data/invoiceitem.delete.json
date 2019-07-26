@@ -1,15 +1,15 @@
 {
-  "id": "item_OQ4jsxy3aMwYE9T7",
+  "id": "item_2MAlPM205eXk65Fx",
   "object": "invoiceitem",
-  "name": "Line Item",
-  "description": "",
+  "name": "N3",
+  "description": "D3",
   "amount": 200,
   "currency": "INR",
   "customer_id": "cust_2WmsQoSRZMWWkcZg",
-  "quantity": 10,
-  "created_at": 1554359921,
+  "quantity": 12,
+  "created_at": 1539074485,
   "notes": null,
-  "deleted_at": 0,
+  "deleted_at": 1539119111,
   "unit": "",
   "hsn_code": "hsn_code",
   "sac_code": "",
@@ -21,5 +21,4 @@
   "net_amount": 2118,
   "taxable_amount": 1980,
   "gross_amount": 1980
-
 }

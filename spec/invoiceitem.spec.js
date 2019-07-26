@@ -6,6 +6,7 @@ const API_BASE = 'https://payabbhi.com/api/v1';
 const mockInvoiceitem = require('./data/invoiceitem.json');
 const mockInvoiceitems = require('./data/invoiceitems.json');
 const mockItemInvoices = require('./data/item.invoices.json');
+const mockInvoiceItemDelete = require('./data/invoiceitem.delete.json');
 
 describe("Invoiceitems", function () {
 
@@ -17,22 +18,22 @@ describe("Invoiceitems", function () {
         amount: 100,
         currency: "INR",
         customer_id: "cust_2WmsQoSRZMWWkcZg",
-        invoice_id: "invt_LN3GM0Ea7hVcsgr6",
+        invoice_id: "item_OQ4jsxy3aMwYE9T7",
         subscription_id: "sub_luQ4QIXzaEIN0g5D",
         quantity: 1
       });
       assert.equal(invoiceitem.object, "invoiceitem");
-      assert.equal(invoiceitem.id, "item_zvenYE0Tk8qTUaER");
+      assert.equal(invoiceitem.id, "item_OQ4jsxy3aMwYE9T7");
     });
   }); // End of #create()
 
 
   describe('#retrieve()', function () {
-    beforeEach(() => { nock(API_BASE).get('/invoiceitems/item_zvenYE0Tk8qTUaER').reply(200, mockInvoiceitem) });
+    beforeEach(() => { nock(API_BASE).get('/invoiceitems/item_OQ4jsxy3aMwYE9T7').reply(200, mockInvoiceitem) });
     it('should retrieve an invoiceitem', async function() {
-      var invoiceitem = await payabbhi.invoiceitems.retrieve('item_zvenYE0Tk8qTUaER');
+      var invoiceitem = await payabbhi.invoiceitems.retrieve('item_OQ4jsxy3aMwYE9T7');
       assert.equal(invoiceitem.object, "invoiceitem");
-      assert.equal(invoiceitem.id, "item_zvenYE0Tk8qTUaER");
+      assert.equal(invoiceitem.id, "item_OQ4jsxy3aMwYE9T7");
     });
   }); // End of #retrieve()
 
@@ -69,10 +70,10 @@ describe("Invoiceitems", function () {
 
 
   describe('#delete()', function() {
-    beforeEach(() => { nock(API_BASE).delete('/invoiceitems/item_zvenYE0Tk8qTUaER').reply(200, mockInvoiceitem) });
+    beforeEach(() => { nock(API_BASE).delete('/invoiceitems/item_2MAlPM205eXk65Fx').reply(200, mockInvoiceItemDelete) });
     it('should return delete an invoiceitem', async function() {
-      var invoiceitems = await payabbhi.invoiceitems.delete('item_zvenYE0Tk8qTUaER');
-      assert.equal(invoiceitems.id, "item_zvenYE0Tk8qTUaER");
+      var invoiceitems = await payabbhi.invoiceitems.delete('item_2MAlPM205eXk65Fx');
+      assert.equal(invoiceitems.id, "item_2MAlPM205eXk65Fx");
       assert.equal(invoiceitems.object, "invoiceitem");
     });
   }); // End of #delete(params)
