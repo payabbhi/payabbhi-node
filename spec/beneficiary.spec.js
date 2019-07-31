@@ -12,6 +12,7 @@ describe('beneficiaryaccounts' , function(){
     it('should create a new beneficiary account with params', async function() {
 
       let payload = {
+      name: "Bruce Wayne",
       beneficiary_name: "ben_test",
       ifsc: "IFSC0001890",
       bank_account_number: 50100000219,
