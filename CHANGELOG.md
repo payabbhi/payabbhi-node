@@ -2,6 +2,10 @@
 
 Changelog for payabbhi-node.
 
+## [1.3.0] - 2018-13-06
+### Added
+- Support for Inflow, Outflow and Settlement
+
 ## [1.2.0] - 2018-12-31
 ### Added
 - Support for Subscription, Event and Outflow
