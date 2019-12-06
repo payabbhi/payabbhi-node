@@ -1,0 +1,88 @@
+{
+    "total_count": 2,
+    "object": "list",
+    "data": [
+        {
+            "id": "pay_4I4NDogajGtV9bVo",
+            "object": "payment",
+            "amount": 50000,
+            "currency": "INR",
+            "status": "captured",
+            "order_id": "",
+            "invoice_id": "",
+            "international": false,
+            "method": "bank_account",
+            "description": "virtual payment",
+            "card": "",
+            "bank": "",
+            "wallet": "",
+            "vpa": "",
+            "emi": null,
+            "customer_id": "cust_2BCT1Tvgg1gNjVPu",
+            "email": "test@example.com",
+            "contact": "9999999999",
+            "notes": {
+                "note_to_beneficiary": "payment for test",
+                "vac_channel": "virtual_account"
+            },
+            "fee": 200,
+            "service_tax": 0,
+            "payout_amount": 49800,
+            "payout_type": "Cr",
+            "settlement_id": "stl_abjBUMNyLnzGbdqU",
+            "refunded_amount": 0,
+            "refund_status": "",
+            "refunds": {
+                "total_count": 0,
+                "object": "list",
+                "data": []
+            },
+            "error_code": "",
+            "error_description": "",
+            "created_at": 1560409074,
+            "virtual_account_id": "va_PakYenlyIIPjGwoU",
+            "payment_page_id" : ""
+        },
+        {
+            "id": "pay_ylmgV0BCWkO9C4Sa",
+            "object": "payment",
+            "amount": 50000,
+            "currency": "INR",
+            "status": "captured",
+            "order_id": "",
+            "invoice_id": "",
+            "international": false,
+            "method": "bank_account",
+            "description": "virtual payment",
+            "card": "",
+            "bank": "",
+            "wallet": "",
+            "vpa": "",
+            "emi": null,
+            "customer_id": "cust_2BCT1Tvgg1gNjVPu",
+            "email": "test@example.com",
+            "contact": "9999999999",
+            "notes": {
+                "note_to_beneficiary": "payment for test",
+                "vac_channel": "virtual_account"
+            },
+            "fee": 200,
+            "service_tax": 0,
+            "payout_amount": 49800,
+            "payout_type": "Cr",
+            "settlement_id": "stl_abjBUMNyLnzGbFOC",
+            "refunded_amount": 0,
+            "refund_status": "",
+            "refunds": {
+                "total_count": 0,
+                "object": "list",
+                "data": []
+            },
+            "error_code": "",
+            "error_description": "",
+            "created_at": 1560408860,
+            "virtual_account_id": "va_PakYenlyIIPjGwoU",
+            "payment_page_id" : ""
+        }
+    ]
+}

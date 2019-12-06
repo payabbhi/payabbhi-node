@@ -1,0 +1,29 @@
+{
+  "id": "cust_yaTTsvmCu8Lqs7Ek",
+  "object": "customer",
+  "name": "Bruce",
+  "email": "a@b.com",
+  "contact_no": "9999999999",
+  "billing_address": {
+    "address_line1": "12 Baker Street",
+    "address_line2": "Near Temple",
+    "city": "Kolkata",
+    "state": "West Bengal",
+    "pin": "700156"
+  },
+  "shipping_address": {
+    "address_line1": "12 Baker Street",
+    "address_line2": "Near Temple",
+    "city": "Kolkata",
+    "state": "West Bengal",
+    "pin": "700156"
+  },
+  "gstin": "",
+  "notes": null,
+  "subscriptions": {
+    "total_count": 0,
+    "object": "list",
+    "data": []
+  },
+  "created_at": 1539002874
+}

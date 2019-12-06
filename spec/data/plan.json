@@ -1,0 +1,12 @@
+{
+  "id": "plan_tuOWN0Sc0uMB4s8E",
+  "object": "plan",
+  "product_id": "prod_wJ6DyX5Bgg2LqAqt",
+  "name": "Basic",
+  "amount": 100,
+  "currency": "INR",
+  "frequency": 2,
+  "interval": "month(s)",
+  "notes": null,
+  "created_at": 1539001274
+}

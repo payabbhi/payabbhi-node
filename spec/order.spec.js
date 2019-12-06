@@ -64,12 +64,14 @@ describe('orders', function() {
   describe('#payments()', function() {
     beforeEach(() => { nock(API_BASE).get('/orders/order_aCsXtMDdTafnDbHd/payments').reply(200, orderPaymentsJSON) });
 
-    it('should return all payments of na order', async function() {
+    it('should return all payments of an order', async function() {
       var orders = await payabbhi.orders.payments('order_aCsXtMDdTafnDbHd');
       assert.equal(orders.total_count, 1);
       assert.equal(orders.object, "list");
       assert.equal(orders.data.length, 1);
     });
   }); // end of #all(params)
+
+  
 
 });

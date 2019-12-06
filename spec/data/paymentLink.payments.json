@@ -1,0 +1,44 @@
+{
+  "total_count": 1,
+  "object": "list",
+  "data": [
+    {
+      "id": "pay_mUy6UYsRvIxH9Qi2",
+      "object": "payment",
+      "amount": 100,
+      "currency": "INR",
+      "status": "captured",
+      "order_id": "",
+      "invoice_id": "invc_NRFJkTGyZYo03cPD",
+      "international": false,
+      "method": "card",
+      "description": "new payment done",
+      "card": "visa-debit",
+      "bank": "",
+      "wallet": "",
+      "vpa": "",
+      "customer_id": "cust_24y1Tvgg1gNjVPu",
+      "email": "a@b.com",
+      "contact": "9999999999",
+      "notes": null,
+      "fee": 5,
+      "service_tax": 0,
+      "payout_amount": 995,
+      "payout_type": "Cr",
+      "settled": true,
+      "settlement_id": "stl_abjBUMNyLnzGbFOC",
+      "refunded_amount": 0,
+      "refund_status": "",
+      "refunds": {
+        "total_count": 0,
+        "object": "list",
+        "data": []
+      },
+      "error_code": "",
+      "error_description": "",
+      "created_at": 1495546415,
+      "virtual_account_id": "",
+      "payment_page_id": ""
+    }
+  ]
+}

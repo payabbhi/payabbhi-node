@@ -1,0 +1,30 @@
+{
+  "total_count": 1,
+  "object": "list",
+  "data": [
+    {
+      "id": "item_FL3nHHB7i7Fpcj1J",
+      "object": "invoiceitem",
+      "name": "N2",
+      "description": "D2",
+      "amount": 200,
+      "currency": "INR",
+      "customer_id": "cust_2WmsQoSRZMWWkcZg",
+      "quantity": 12,
+      "created_at": 1539074485,
+      "notes": null,
+      "deleted_at": 0,
+      "unit": "",
+      "hsn_code": "hsn_code",
+      "sac_code": "",
+      "tax_rate": 500,
+      "cess": 200,
+      "tax_inclusive": false,
+      "discount": 20,
+      "tax_amount": 138,
+      "net_amount": 2118,
+      "taxable_amount": 1980,
+      "gross_amount": 1980
+    }
+  ]
+}
